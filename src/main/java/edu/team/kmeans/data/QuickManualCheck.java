@@ -28,3 +28,27 @@
 
 /** M5 future synthetic data, validation, and initialization. See docs/ownership.md and docs/architecture.md. */
 package edu.team.kmeans.data;
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+
+
+import edu.team.kmeans.model.Point;
+import java.util.List;
+
+public class QuickManualCheck {
+    public static void main(String[] args) {
+        SyntheticDataGenerator generator = new SyntheticDataGenerator();
+        RandomCentroidInitializer initializer = new RandomCentroidInitializer();
+
+        long seed = 42;
+        List<Point> points = generator.GeneratePoints(100, 5, 8.0,seed);
+        List<Point> centroids = initializer.initialize(points, 3, seed);
+
+        System.out.println("Generated Points (" + points.size() + "):");
+        points.forEach(System.out::println);
+
+        System.out.println("\nChosen Initial Centroids (" + centroids.size() + "):");
+        centroids.forEach(System.out::println);
+    }
+}
